@@ -1,4 +1,8 @@
-param([bool]$DownloadPrerequisites=$true, [bool]$InstallPrerequisites=$true)
+param(  
+    [bool]$DownloadPrerequisites=$true, 
+    [bool]$InstallPrerequisites=$true, 
+    [bool]$BuildVimAndYcm=$true 
+)
 
 function DownloadFile($url, $output)
 {
@@ -26,7 +30,7 @@ New-Item $vs2015InstLocation -type directory -ErrorAction SilentlyContinue
 
 ## Download Prerequisite Installs
 
-if($downloadPrerequisites -eq $true)
+if($DownloadPrerequisites -eq $true)
 {
     # .Net 4.5.1 Framework
 
@@ -58,7 +62,7 @@ CD "$dltemp"
 
 ## Run Installs
 
-if($installPrerequisites -eq $true)
+if($InstallPrerequisites -eq $true)
 {
     # .Net 4.5.1 Framework:
 
@@ -78,7 +82,6 @@ if($installPrerequisites -eq $true)
         # Set Git path variable
 
     $env:PATH = "c:\program files\git\bin";$env:PATH
-
 
     ## Visual Studio:
 
@@ -104,41 +107,42 @@ if($installPrerequisites -eq $true)
 
 }
 
+if($BuildVimAndYcm -eq $true)
+{
 
-## Clone Repositories
+    ## Clone Repositories
 
-# Vim
+    # Vim
 
-Start-Process -NoNewWindow -Wait -FilePath "git" -ArgumentList 'https://github.com/vim/vim.git',"$vimbuildsrc"
+    Start-Process -NoNewWindow -Wait -FilePath "git" -ArgumentList 'https://github.com/vim/vim.git',"$vimbuildsrc"
 
-# YouCompleteMe
+    # YouCompleteMe
 
-Start-Process -NoNewWindow -Wait -FilePath "git" -ArgumentList 'https://github.com/Valloric/YouCompleteMe.git',"$env:USERPROFILE\.git\bundle\YouCompleteMe"
-
-
-## Call environment-set scripts
-
-Start-Process -NoNewWindow -Wait -FilePath "$env:VS140COMNTOOLSvsvars32.bat" -ArgumentList 'x86_amd64'
-Start-Process -NoNewWindow -Wait -FilePath "$env:ProgramFiles\Microsoft SDKs\Windows\v7.0\bin\SetEnv.Cmd" -ArgumentList '/x64'
-
-$vcdir = "$env:VS140COMNTOOLS..\..\VC\"
-
-Start-Process -NoNewWindow -Wait -FilePath "$vcdir\vcvarsall.bat" -ArgumentList 'x86_amd64'
+    Start-Process -NoNewWindow -Wait -FilePath "git" -ArgumentList 'https://github.com/Valloric/YouCompleteMe.git',"$env:USERPROFILE\.git\bundle\YouCompleteMe"
 
 
-## Build Vim
+    ## Call environment-set scripts
 
-Start-Process -NoNewWindow -Wait -FilePath "$vcdir\bin\nmake.exe" -ArgumentList '-f','Make_mvc.mak CPU=AMD64 GUI=no OLE=yes PYTHON=c:\python27 DYNAMIC_PYTHON=yes PYTHON_VER=27 PYTHON3=c:\python34 DYNAMIC_PYTHON3=yes PYTHON3_VER=34  %1 IME=yes CSCOPE=yes'
+    Start-Process -NoNewWindow -Wait -FilePath "$env:VS140COMNTOOLSvsvars32.bat" -ArgumentList 'x86_amd64'
+    Start-Process -NoNewWindow -Wait -FilePath "$env:ProgramFiles\Microsoft SDKs\Windows\v7.0\bin\SetEnv.Cmd" -ArgumentList '/x64'
 
-## Rename old Vim.exe and copy built Vim to Vim path
+    $vcdir = "$env:VS140COMNTOOLS..\..\VC\"
 
-Rename-Item "c:\program files (x86)\vim\vim74\vim.exe" -NewName "c:\program files (x86)\vim\vim74\vim.old.exe"
+    Start-Process -NoNewWindow -Wait -FilePath "$vcdir\vcvarsall.bat" -ArgumentList 'x86_amd64'
 
-Copy-Item "$vimbuild\vim\src\vim.exe" -Destination "c:\program files (x86)\vim\vim74\vim.exe"
+    ## Build Vim
 
+    Start-Process -NoNewWindow -Wait -FilePath "$vcdir\bin\nmake.exe" -ArgumentList '-f','Make_mvc.mak CPU=AMD64 GUI=no OLE=yes PYTHON=c:\python27 DYNAMIC_PYTHON=yes PYTHON_VER=27 PYTHON3=c:\python34 DYNAMIC_PYTHON3=yes PYTHON3_VER=34  %1 IME=yes CSCOPE=yes'
 
-## Build YouCompleteMe
+    ## Rename old Vim.exe and copy built Vim to Vim path
 
-CD $ycmbuildsrc
+    Rename-Item "c:\program files (x86)\vim\vim74\vim.exe" -NewName "c:\program files (x86)\vim\vim74\vim.old.exe"
 
-Start-Process -NoNewWindow -Wait -FilePath "c:\python27\python.exe" -ArgumentList "$ycmbuildsrc\install.py",'--all' 
+    Copy-Item "$vimbuild\vim\src\vim.exe" -Destination "c:\program files (x86)\vim\vim74\vim.exe"
+
+    ## Build YouCompleteMe
+
+    CD $ycmbuildsrc
+
+    Start-Process -NoNewWindow -Wait -FilePath "c:\python27\python.exe" -ArgumentList "$ycmbuildsrc\install.py",'--all' 
+}
