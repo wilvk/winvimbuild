@@ -6,7 +6,7 @@ It additionally builds Vim and YouCompleteMe for 64 bit systems based on the mas
 
 This is useful for when staging a new PC or a Virtual Machine when setting up a develoment environment in Windows.
 
-I originally put this script together as I found it excessively difficult to get the YouCompleteMe AutoCompletion working correctly for Vim in Windows. The major issue installing these components separately is invalid 'bitness' and of the various components required. Having this install all components silently and build correctly in a script saves a lot of time.
+I put this script together as I found it excessively difficult to get the YouCompleteMe AutoCompletion working correctly for Vim in Windows. The major issue installing these components separately is invalid 'bitness' and of the various components required. Having this install all components silently and build correctly in a script saves a lot of time.
 
 The order of processing is:
 
@@ -38,6 +38,8 @@ The order of processing is:
     - YouCompleteMe
 
 TODO: Install Vundle
+
 TODO: Install Node.js
+
 TODO: Set files and parameters for %USERPROFILE%\\.vimrc and %USERPROFILE%\\.tern-project
  
