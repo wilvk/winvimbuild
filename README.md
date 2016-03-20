@@ -37,4 +37,4 @@ The order of processing is:
     - Vim
     - YouCompleteMe
 
-- TODO: Set files and parameters for %USERPROFILE%\.vimrc and %USERPROFILE%\.tern-project 
+- TODO: Set files and parameters for %USERPROFILE%\\.vimrc and %USERPROFILE%\\.tern-project 
