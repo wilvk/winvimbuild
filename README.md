@@ -1,6 +1,6 @@
 # winvimbuild
 
-This is a Powershell script to download and install all prerequisites for building Vim on Windows 7 or later.
+This is a Powershell script to download and install all prerequisites for building Vim with AutoComplete for Node.js on Windows 7 or later.
 
 It additionally builds Vim and YouCompleteMe for 64 bit systems based on the master code branches for both. 
 
@@ -11,6 +11,7 @@ I originally put this script together as I found it excessively difficult to get
 The order of processing is:
 
 - Download Prerequisites including:
+
     - .Net Framework 4.5.1
     - Python 2.7.9
     - Python 3.4.4
@@ -21,12 +22,19 @@ The order of processing is:
 
 - Install Prerequisites
 
+- Clone Repositories for:
+
+    - Vim
+    - YouCompleteMe
+
 - Set Environment Variables for Build including:
+
     - Windows 7 SDK
     - Visual Studio 2015 Community Edition
 
-- Run build for Vim using nmake
+- Run Builds including:
 
-- Run build for YouCompleteMe using python and nmake
+    - Vim
+    - YouCompleteMe
 
-
+- TODO: Set files and parameters for %USERPROFILE%\.vimrc and %USERPROFILE%\.tern-project 
