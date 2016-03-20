@@ -1,6 +1,6 @@
 # winvimbuild
 
-This is a Powershell script to download and install all prerequisites for building Vim with AutoComplete for Node.js on Windows 7 or later.
+This is a Powershell script to download and install all the prerequisites for building Vim with AutoComplete for Node.js on Windows 7 or later.
 
 It additionally builds Vim and YouCompleteMe for 64 bit systems based on the master code branches for both. 
 
@@ -37,4 +37,7 @@ The order of processing is:
     - Vim
     - YouCompleteMe
 
-- TODO: Set files and parameters for %USERPROFILE%\\.vimrc and %USERPROFILE%\\.tern-project 
+TODO: Install Vundle
+TODO: Install Node.js
+TODO: Set files and parameters for %USERPROFILE%\\.vimrc and %USERPROFILE%\\.tern-project
+ 
