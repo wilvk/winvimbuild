@@ -110,23 +110,28 @@ if($InstallPrerequisites -eq $true)
 if($BuildVimAndYcm -eq $true)
 {
 
-    ## Clone Repositories
+    ## Clone Repositories:
 
-    # Vim
+        # Vim
 
     Start-Process -NoNewWindow -Wait -FilePath "git" -ArgumentList 'https://github.com/vim/vim.git',"$vimbuildsrc"
 
-    # YouCompleteMe
+        # YouCompleteMe
 
     Start-Process -NoNewWindow -Wait -FilePath "git" -ArgumentList 'https://github.com/Valloric/YouCompleteMe.git',"$env:USERPROFILE\.git\bundle\YouCompleteMe"
 
 
-    ## Call environment-set scripts
+    ## Call environment-set scripts:
 
-    Start-Process -NoNewWindow -Wait -FilePath "$env:VS140COMNTOOLSvsvars32.bat" -ArgumentList 'x86_amd64'
+        # Windows SDK Variables
+
     Start-Process -NoNewWindow -Wait -FilePath "$env:ProgramFiles\Microsoft SDKs\Windows\v7.0\bin\SetEnv.Cmd" -ArgumentList '/x64'
+    
+        # Set Visual Studio Visual C++ Compiler directory variable
 
     $vcdir = "$env:VS140COMNTOOLS..\..\VC\"
+
+        # Specify VC++ environment varibles for x64
 
     Start-Process -NoNewWindow -Wait -FilePath "$vcdir\vcvarsall.bat" -ArgumentList 'x86_amd64'
 
