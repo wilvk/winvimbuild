@@ -2,11 +2,11 @@
 
 ## Overview:
 
-This is a Powershell script to download and install all the prerequisites for building Vim with YouCompleteMe AutoComplete for Node.js on Windows 7 or later.
+This is a Powershell script to download and install all the prerequisites for and then build Vim and YouCompleteMe on Windows 7 or later.
 
-It builds Vim and YouCompleteMe for 64 bit systems based on the master code branches for both. 
+It builds Vim and YouCompleteMe for 64 bit Windows systems based on the master code branches for both.
 
-This is useful for when staging a new PC or a Virtual Machine when setting up a develoment environment in Windows.
+This is useful when staging a new PC or a Virtual Machine when setting up a development environment in Windows.
 
 ## Requirements:
 
@@ -48,4 +48,3 @@ The script must be run on Windows 7 or higher using Powershell 2.0+ with Adminis
 - Install Node.js
 
 - Set files and parameters for %USERPROFILE%\\.vimrc and %USERPROFILE%\\.tern-project
- 
