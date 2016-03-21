@@ -115,12 +115,12 @@ $buildProcesses =
     (
         "Cloning Vim",
         "git",
-        ('https://github.com/vim/vim.git',"$vimbuildsrc")
+        ('clone','https://github.com/vim/vim.git',"$vimbuildsrc")
     ),
     (
         "Cloning YouCompleteMe",
         "git",
-        ('https://github.com/Valloric/YouCompleteMe.git',"$env:USERPROFILE\.git\bundle\YouCompleteMe")
+        ('clone','https://github.com/Valloric/YouCompleteMe.git',"$env:USERPROFILE\.git\bundle\YouCompleteMe")
     ),
     (
         "Setting Windows SDK Environment Variables",
