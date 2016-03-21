@@ -10,7 +10,7 @@ This is useful for when staging a new PC or a Virtual Machine when setting up a 
 
 ## Requirements:
 
-The script must be run on Windows 7 or higher with Administrator privileges.
+The script must be run on Windows 7 or higher using Powershell 2.0+ with Administrator privileges.
 
 ## Processing Order:
 
