@@ -87,11 +87,11 @@ $prereqProcesses =
         "$DLTEMP\Git-2.7.4-64-bit.exe",
         ('/SILENT','/COMPONENTS="icons,ext\reg\shellhere,assoc,assoc_sh')
     ),(
-        "Installing VS2015 prerequisites",
+        "Downloading VS2015 Prerequisites via Installer",
         "$dltemp\vs_community_ENU.exe",
         ('/Layout',"$vs2015InstLocation",'/silent')
     ),(
-        "Installing VS2015 Deploy File",
+        "Creating VS2015 Deploy File",
         "$vs2015InstLocation\vs_community.exe",
         ('/CreateAdminFile','$vs2015InstLocation\packages\AdminDeployment.xml','/silent')
     ),(
