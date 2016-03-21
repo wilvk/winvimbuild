@@ -28,9 +28,11 @@ $vs2015InstLocation = "$dltemp\vs2015communityinstall"
 $ycmbuildsrc = "$env:USERPROFILE\.git\bundle\YouCompleteMe"
 
 New-Item $vimbuild -type directory -ErrorAction SilentlyContinue
+New-Item $vimbuildsrc -type directory -ErrorAction SilentlyContinue
 New-Item $dltemp -type directory -ErrorAction SilentlyContinue
-New-Item $ycmbuildsrc -type directory -ErrorAction SilentlyContinue
 New-Item $vs2015InstLocation -type directory -ErrorAction SilentlyContinue
+New-Item $ycmbuildsrc -type directory -ErrorAction SilentlyContinue
+
 
 $downloads = 
     (
@@ -111,7 +113,7 @@ $prereqProcesses =
 
 $buildProcesses = 
     (
-        "Cloning Git",
+        "Cloning Vim",
         "git",
         ('https://github.com/vim/vim.git',"$vimbuildsrc")
     ),
