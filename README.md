@@ -22,7 +22,7 @@ The script must be run on Windows 7 or higher using Powershell 2.0+ with Adminis
     - Visual Studio 2015 Community Edition
     - Windows 7 SDK
     - Git 2.7.4
-    - Windows Vim Install
+    - Windows Vim 7.4 Install
 
 - Install Prerequisites
 
