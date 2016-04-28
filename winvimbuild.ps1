@@ -17,7 +17,16 @@ Function RunProcess($comment, $process, $argumentList)
 {
     $startTime = Get-Date    
     Write-Output $comment
-    Start-Process -NoNewWindow -Wait -FilePath $process -ArgumentList $argumentList
+    
+    if($argumentList.Count > 0)
+    {
+        Start-Process -NoNewWindow -Wait -FilePath $process -ArgumentList $argumentList    
+    }
+    else
+    {
+        Start-Process -NoNewWindow -Wait -FilePath $process
+    }
+    
     Write-Output "Time taken: $((New-TimeSpan -Start $startTime -End $(Get-Date)).TotalSeconds) second(s)"
 }
 
@@ -93,11 +102,11 @@ $prereqProcesses =
     ),(
         "Creating VS2015 Deploy File",
         "$vs2015InstLocation\vs_community.exe",
-        ('/CreateAdminFile','$vs2015InstLocation\packages\AdminDeployment.xml','/silent')
+        ('/CreateAdminFile',"$vs2015InstLocation\packages\AdminDeployment.xml",'/silent')
     ),(
         "Installing VS2015 Silently",
         "$vs2015InstLocation\vs_community.exe", 
-        ("")
+        @()
     ),(
         "Installing Windows 7 SDK",
         "$dltemp\winsdk_web.exe",
